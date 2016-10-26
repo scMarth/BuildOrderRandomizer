@@ -6,7 +6,6 @@
 
 namespace Project1 {
 
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -46,9 +45,7 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::Button^  button4;
-	private: System::Windows::Forms::Label^  Output;
-
-
+	private: System::Windows::Forms::TextBox^  Output;
 
 	protected:
 
@@ -74,7 +71,7 @@ namespace Project1 {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->Output = (gcnew System::Windows::Forms::Label());
+			this->Output = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -130,11 +127,17 @@ namespace Project1 {
 			// 
 			// Output
 			// 
-			this->Output->AutoEllipsis = true;
-			this->Output->AutoSize = true;
-			this->Output->Location = System::Drawing::Point(12, 45);
+			this->Output->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->Output->Cursor = System::Windows::Forms::Cursors::Arrow;
+			this->Output->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->Output->Location = System::Drawing::Point(12, 57);
+			this->Output->Multiline = true;
 			this->Output->Name = L"Output";
-			this->Output->Size = System::Drawing::Size(0, 13);
+			this->Output->ReadOnly = true;
+			this->Output->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->Output->Size = System::Drawing::Size(657, 515);
 			this->Output->TabIndex = 6;
 			// 
 			// MyForm
@@ -187,26 +190,33 @@ namespace Project1 {
 			button3->Text = "RvP";
 			button4->Text = "RvR";
 		}
-
 	}
 
-private: System::Void printFile(String^ path, String^ fileName) {
-	//Output->Text += "Filename: " + fileName + "\n\n";
-	Output->Text += fileName->Substring(path->Length) + "\n\n";
-
-
+private: System::String^ randomRace() {
 	std::random_device rd;   // non-deterministic generator
 	std::mt19937 gen(rd());  // to seed mersenne twister.
-	std::uniform_int_distribution<> dist(1, 3); // distribute results between 1 and 6 inclusive.
+	std::uniform_int_distribution<> dist(1, 3); // distribute results between 1 and 3 inclusive.
 
+	int number = dist(gen);
 
-	Output->Text += "Random number: " + dist(gen) + "\n\n";
+	if (number == 1)
+		return "T";
+	else if (number == 2)
+		return "P";
+	else
+		return "Z";
+}
 
+private: System::Void printFile(String^ path, String^ fileName) {
 
+	Output->Text += fileName->Substring(path->Length) +
+		Environment::NewLine + Environment::NewLine;
 
+	String^ randRace = randomRace();
+
+	//attempt to print the file
 	try
 	{
-		Console::WriteLine("trying to open file {0}...", fileName);
 		StreamReader^ din = File::OpenText(fileName);
 
 		String^ str;
@@ -214,85 +224,95 @@ private: System::Void printFile(String^ path, String^ fileName) {
 		while ((str = din->ReadLine()) != nullptr)
 		{
 			count++;
-			Console::WriteLine("line {0}: {1}", count, str);
-			Output->Text += str + "\n";
+			Output->Text += str + Environment::NewLine;
 		}
 	}
 	catch (Exception^ e)
 	{
 		if (dynamic_cast<FileNotFoundException^>(e))
-			Console::WriteLine("file '{0}' not found", fileName);
+			Output->Text += "file not found: " + fileName;
 		else
-			Console::WriteLine("problem reading file '{0}'", fileName);
+			Output->Text += "problem reading file: " + fileName;
+	}
+}
+
+
+private: System::String^ getButtonText(int buttonNum) {
+	if (buttonNum == 1)
+		return button1->Text;
+	else if (buttonNum == 2)
+		return button2->Text;
+	else if (buttonNum == 3)
+		return button3->Text;
+	else
+		return button4->Text;
+}
+
+
+private: System::String^ getMatchup(String^ matchup) {
+
+	if (matchup == "RvZ" || matchup == "RvT" || matchup == "RvP"){
+		return randomRace() + matchup->Substring(1);
+	}
+	else if (matchup == "PvR" || matchup == "TvR" || matchup == "ZvR") {
+		return matchup->Substring(0, 2) + randomRace();
+	}
+	else{ // RvR
+		return randomRace() + "v" + randomRace();
+	}
+}
+
+private: System::Void buttonClickHandler(int buttonNum) {
+	Output->Text = "";
+	String^ path = Directory::GetCurrentDirectory();
+
+	// handle special cases that involve random race
+	String^ matchup = getButtonText(buttonNum);
+	if (matchup == "RvZ" || matchup == "RvT" || matchup == "RvP" ||
+		matchup == "PvR" || matchup == "TvR" || matchup == "ZvR" ||
+		matchup == "RvR")
+	{
+		matchup = getMatchup(matchup);
 	}
 
+
+	path = path + "\\" + matchup + "\\";
+
+	Output->Text += "Path: " + path + Environment::NewLine + Environment::NewLine;
+	Output->Text += "Matchup: " + matchup + Environment::NewLine + Environment::NewLine;
+
+
+	try {
+		array<String^>^ file = Directory::GetFiles(path);
+		std::random_device rd;   // non-deterministic generator
+		std::mt19937 gen(rd());  // to seed mersenne twister.
+		std::uniform_int_distribution<> dist(0, file->Length - 1); // choose a file number at random
+		printFile(path, file[dist(gen)]);
+	}
+	catch (Exception^ e)
+	{
+		if (dynamic_cast<DirectoryNotFoundException^>(e))
+			Output->Text += "No such directory: " + path;
+		else
+			Output->Text += "Problem getting files from directory: " + path;
+	}
 }
 
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	Output->Text = "";
-	String^ path = Directory::GetCurrentDirectory();
-	path = path + "\\" + button1->Text + "\\";
-
-	array<String^>^ file = Directory::GetFiles(path);
-	for (int i = 0; i < file->Length; i++) {
-		printFile(path, file[i]);
-	}
-
-
-
+	buttonClickHandler(1);
 }
 
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (button2->Text == "ZvT") {
-		Output->Text = "Zerg versus Terran Build Order:";
-	}
-	else if (button2->Text == "TvT") {
-		Output->Text = "Terran versus Terran Build Order:";
-
-	}
-	else if (button2->Text == "PvT") {
-		Output->Text = "Protoss versus Terran Build Order:";
-	}
-	else if (button2->Text == "RvT") {
-		Output->Text = "Random versus Terran Build Order:";
-	}
+	buttonClickHandler(2);
 }
 
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (button3->Text == "ZvP") {
-		Output->Text = "Zerg versus Protoss Build Order:";
-	}
-	else if (button3->Text == "TvP") {
-		Output->Text = "Terran versus Protoss Build Order:";
-
-	}
-	else if (button3->Text == "PvP") {
-		Output->Text = "Protoss versus Protoss Build Order:";
-	}
-	else if (button3->Text == "RvP") {
-		Output->Text = "Random versus Protoss Build Order:";
-	}
+	buttonClickHandler(3);
 }
 
 private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (button4->Text == "ZvR") {
-		Output->Text = "Zerg versus Random Build Order:";
-	}
-	else if (button4->Text == "TvR") {
-		Output->Text = "Terran versus Random Build Order:";
-
-	}
-	else if (button4->Text == "PvR") {
-		Output->Text = "Protoss versus Random Build Order:";
-	}
-	else if (button4->Text == "RvR") {
-		Output->Text = "Random versus Random Build Order:";
-	}
+	buttonClickHandler(4);
 }
-
-
-
-
 
 };
 }

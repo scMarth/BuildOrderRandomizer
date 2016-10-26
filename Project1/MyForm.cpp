@@ -11,6 +11,5 @@ void main()
 	Project1::MyForm form;
 	Application::Run(%form);
 
-
 }
 

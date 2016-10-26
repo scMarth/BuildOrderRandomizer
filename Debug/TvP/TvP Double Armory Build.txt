@@ -1,0 +1,32 @@
+Off Siege Expand
+
+9 - Supply Depot @ wall
+11 - Barracks
+11 - Refinery (see note)
+13 - Scout with an SCV (see note)
+@100% Refinery - three SCVs on gas
+15 - 100 gas - Factory - pull one SCV off gas
+15 - Supply Depot - pull one SCV off gas (see note)
+16 - Train one SCV
+Train one Marine (see note)
+@100 gas - Put two more SCVs on gas (for a total of 3)
+21 - Command Center at natural
+@100% Machine shop - Siege Tank
+24 - Supply Depot
+25 - Research Siege Tech
+Continue building SCVs and Siege Tanks
+33 - Armory
+33 - Engineering Bay
+38 - Supply Depot
+Natural Refinery ASAP
+@100% Armory - Research Vehicle Weapons Level 1, Charon Booster
+Build one Goliath
+46 - Supply Depot
+@100% Engineering Bay - ~3 turrets (covering base entrance and each CC)
+49 - Supply Depot
+49 - Second Factory
+50 - Command Center
+@50% Vehicle Weapons Level 1 - Starport
+@100% Starport - Science Facility
+@100% Starport - Second Armory, Academy
+@100% Academy - Comsat Stations at both Command Centers

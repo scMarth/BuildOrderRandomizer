@@ -1,0 +1,5 @@
+﻿  MyForm.cpp
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  MyForm.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  Project1.vcxproj -> C:\Users\Vincent\Documents\Misc\Github\BuildOrderRandomizer\x64\Debug\Project1.exe
+  Project1.vcxproj -> C:\Users\Vincent\Documents\Misc\Github\BuildOrderRandomizer\x64\Debug\Project1.pdb (Partial PDB)
