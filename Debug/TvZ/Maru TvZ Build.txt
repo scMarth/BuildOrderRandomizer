@@ -1,0 +1,11 @@
+reaper FE (skip reaper and just get reactor)
+19 supply
+20 100 gas = factory
+	pump 2 rines at a time until factory is done
+23 gas
+	factory done = factory gets reactor, pump marines w/ naked rax, make starport
+starport almost done = armory
+starport done = medivac -> liberator
+medivac done = load 7 rines, move out with 6 hellions
+
+first two hellions scout for 3rd

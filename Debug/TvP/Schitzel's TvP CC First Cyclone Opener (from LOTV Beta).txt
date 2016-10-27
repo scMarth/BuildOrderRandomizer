@@ -1,0 +1,12 @@
+14 supply
+17 cc
+18 rax
+19 gas
+20 gas
+rax done = orbital + factory + rine
+26 bunker (yume style placement near ramp)
+	rine done = tech lab
+factory done = reactor on rax + cyclone + depo (full wall off)
+
+Notes on this build:
+4 gate blink kills you w/o bunkers in main

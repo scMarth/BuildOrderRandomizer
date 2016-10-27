@@ -1,0 +1,29 @@
+14	  0:17	  Supply Depot
+17	  0:59	  Command Center
+18	  1:12	  Barracks
+19	  1:26	  Barracks
+20	  1:44	  Barracks
+22	  2:01	  Marine
+23	  2:12	  Orbital Command x2
+23	  2:16	  Marine
+23	  2:18	  Marine
+25	  2:31	  Refinery x2
+25	  2:36	  Marine x3
+30	  2:49	  Supply Depot
+31	  2:55	  Marine x3
+37	  3:06	  Engineering Bay
+37	  3:13	  Marine x2
+37	  3:14	  Reaper
+42	  3:21	  Supply Depot
+44	  3:34	  Missile Turret
+44	  3:36	  Barracks Tech Lab, Barracks Reactor
+44	  3:41	  Terran Infantry Weapons Level 1,
+46	  3:46	  Supply Depot
+46	  3:50	  Marine
+46	  3:54	  Marine
+46	  3:55	  Refinery
+50	  4:09	  Marine
+53	  4:12	  Marauder
+53	  4:14	  Marine x2
+57	  4:18	  Concussive Shells
+57	  4:20	  Factory

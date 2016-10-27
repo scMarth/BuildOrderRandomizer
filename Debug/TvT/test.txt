@@ -1,6 +1,0 @@
-14/15: Supply
-16/23: Barracks
-16/23: Refinery
-@100 Rax: Reactor + OC
-19/23: 2nd CC
-19/23: 2nd Supply
