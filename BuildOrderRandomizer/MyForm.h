@@ -46,7 +46,11 @@ namespace BuildOrderRandomizer {
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::Button^  button4;
-	private: System::Windows::Forms::TextBox^  Output;
+	private: System::Windows::Forms::RichTextBox^  Output;
+
+
+
+
 
 	protected:
 
@@ -72,7 +76,7 @@ namespace BuildOrderRandomizer {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->Output = (gcnew System::Windows::Forms::TextBox());
+			this->Output = (gcnew System::Windows::Forms::RichTextBox());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -80,9 +84,9 @@ namespace BuildOrderRandomizer {
 			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Location = System::Drawing::Point(14, 12);
+			this->button1->Location = System::Drawing::Point(12, 12);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(87, 23);
+			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"RvZ";
 			this->button1->UseVisualStyleBackColor = false;
@@ -93,9 +97,9 @@ namespace BuildOrderRandomizer {
 			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Location = System::Drawing::Point(108, 12);
+			this->button2->Location = System::Drawing::Point(93, 12);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(87, 23);
+			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"RvT";
 			this->button2->UseVisualStyleBackColor = false;
@@ -106,9 +110,9 @@ namespace BuildOrderRandomizer {
 			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button3->Location = System::Drawing::Point(203, 12);
+			this->button3->Location = System::Drawing::Point(174, 12);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(87, 23);
+			this->button3->Size = System::Drawing::Size(75, 23);
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"RvP";
 			this->button3->UseVisualStyleBackColor = false;
@@ -120,13 +124,15 @@ namespace BuildOrderRandomizer {
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->comboBox1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)));
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Zerg", L"Terran", L"Protoss", L"Random" });
-			this->comboBox1->Location = System::Drawing::Point(392, 14);
+			this->comboBox1->Location = System::Drawing::Point(336, 12);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(140, 21);
+			this->comboBox1->Size = System::Drawing::Size(121, 23);
 			this->comboBox1->TabIndex = 4;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::comboBox1_SelectedIndexChanged);
 			// 
@@ -135,9 +141,9 @@ namespace BuildOrderRandomizer {
 			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button4->Location = System::Drawing::Point(297, 12);
+			this->button4->Location = System::Drawing::Point(255, 12);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(87, 23);
+			this->button4->Size = System::Drawing::Size(75, 23);
 			this->button4->TabIndex = 5;
 			this->button4->Text = L"RvR";
 			this->button4->UseVisualStyleBackColor = false;
@@ -150,39 +156,38 @@ namespace BuildOrderRandomizer {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->Output->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)));
-			this->Output->Cursor = System::Windows::Forms::Cursors::Arrow;
-			this->Output->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
+			this->Output->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->Output->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)));
-			this->Output->Location = System::Drawing::Point(14, 57);
-			this->Output->Multiline = true;
+			this->Output->Location = System::Drawing::Point(12, 57);
 			this->Output->Name = L"Output";
 			this->Output->ReadOnly = true;
-			this->Output->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			this->Output->Size = System::Drawing::Size(766, 515);
-			this->Output->TabIndex = 6;
+			this->Output->Size = System::Drawing::Size(661, 518);
+			this->Output->TabIndex = 7;
+			this->Output->Text = L"";
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(7, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
-			this->ClientSize = System::Drawing::Size(794, 584);
+			this->ClientSize = System::Drawing::Size(681, 584);
 			this->Controls->Add(this->Output);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)));
 			this->Name = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->Resize += gcnew System::EventHandler(this, &MyForm::refreshOutput);
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -338,5 +343,21 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 	buttonClickHandler(4);
 }
 
+private: System::Void refreshOutput(System::Object^  sender, System::EventArgs^  e) {
+	Output->Refresh();
+}
+
+
+/*
+private: System::Void highlightLine(int index, Color color) {
+	Output->SelectAll();
+	Output->SelectionBackColor = Output->BackColor;
+	array<String^>^ lines = Output->Lines;
+	int start = Output->GetFirstCharIndexOfCurrentLine();
+	int length = lines[index]->Length;
+	Output->Select(start, length);
+	Output->SelectionBackColor = color;
+}
+*/
 };
 }
