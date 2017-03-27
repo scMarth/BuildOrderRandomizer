@@ -1,0 +1,12 @@
+Gas first
+nonstop rine production
+fact done = starport + hellion
+
+then mine + medivac
+mine done = tech lab
+tech lab done = cyclone
+medivac done = viking
+
+factory: hellion -> mine -> tech lab -> cyclone
+starport: medivac -> viking -> starport gets factory tech lab -> cloak banshee
+43 expo

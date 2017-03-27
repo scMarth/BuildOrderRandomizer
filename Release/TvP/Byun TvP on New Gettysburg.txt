@@ -1,0 +1,16 @@
+14 supply
+16 barracks
+16 gas
+rax = marine -> reactor ->
+20 CC
+20 supply
+21 factory
+22 gas
+
+factory = mine -> mine -> tech lab
+starport after factory
+starport = medivac ->
+
+4 minute scans main
+
+if you kill a oracle, put 2 mines in medi and push out with all marines

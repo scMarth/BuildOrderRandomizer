@@ -1,0 +1,11 @@
+14 supply
+15 gas
+16 barracks
+17 gas
+19 factory + orbital + reaper
+20 supply
+37 CC
+
+barracks: reaper -> reaper -> reaper
+factory: hellion -> hellion -> hellion
+starport: 
